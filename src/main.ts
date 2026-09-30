@@ -10,6 +10,14 @@ async function bootstrap() {
     .setDescription('Documentación de rutas para el sistema de usuarios y tenants')
     .setVersion('1.0')
     .addTag('api')
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      in: 'header',
+      name: 'Authorization',
+      description: 'Introduce tu token JWT aquí',
+    })
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
